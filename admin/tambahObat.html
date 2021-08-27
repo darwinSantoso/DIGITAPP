@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Tambah Obat</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/icon.ico" />
+    <link href="../assets/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="stokObat.html">
+          <div class="sidebar-brand-icon">
+            <i class="fas fa-clinic-medical"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">DIGITAPP</div>
+        </a>
+        <hr class="sidebar-divider my-0" />
+        <li class="nav-item">
+          <a class="nav-link" href="stokObat.html">
+            <i class="fas fa-fw fa-prescription-bottle-alt"></i>
+            <span>Stok Obat</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="historyPesanan.html">
+            <i class="fas fa-fw fa-scroll"></i>
+            <span>History Pesanan</span></a
+          >
+        </li>
+        <hr class="sidebar-divider d-none d-md-block" />
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="displayName">Admin</span>
+                  <img class="img-profile rounded-circle" src="../assets/img/profile/default.png" />
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="card shadow mb-4">
+                  <div class="card-header bg-white py-3">
+                    <div class="row">
+                      <div class="col">
+                        <h4 class="align-middle m-0 font-weight-bold text-primary">Tambah Obat</h4>
+                      </div>
+                      <div class="col-auto">
+                        <a href="stokObat.html" class="btn btn-sm btn-primary">Kembali</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <form id="tambahObat">
+                      <div class="row form-group">
+                        <label class="col-md-3 text-md-right" for="nama">Nama</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" autocomplete="off" name="nama" id="nama" required />
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <label class="col-md-3 text-md-right" for="jenis">Jenis</label>
+                        <div class="col-md-9">
+                          <select class="form-control" name="jenis" id="jenis">
+                            <option value="batuk">Obat Batuk</option>
+                            <option value="demam">Obat Demam</option>
+                            <option value="flu">Obat Flu</option>
+                            <option value="suplemen">Suplemen</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <label class="col-md-3 text-md-right" for="tipe">Tipe</label>
+                        <div class="col-md-9">
+                          <select class="form-control" name="tipe" id="tipe">
+                            <option value="bubuk">Bubuk</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="kapsul">Kapsul</option>
+                            <option value="cair">Cair</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <label class="col-md-3 text-md-right" for="stok">Stok</label>
+                        <div class="col-md-9">
+                          <input type="number" onchange="validasi()" class="form-control" name="stok" id="stok" value="1" />
+                        </div>
+                      </div>
+                      <div class="row form-group">
+                        <label class="col-md-3 text-md-right" for="harga">Harga</label>
+                        <div class="col-md-9">
+                          <input type="number" onchange="validasi()" step="1000" class="form-control" name="harga" id="harga" value="1000" />
+                        </div>
+                      </div>
+                      <hr />
+                      <div class="row form-group justify-content-end">
+                        <div class="col-md-9">
+                          <button type="submit" data-toggle="tooltip" class="btn btn-primary btn-icon-split">
+                            <span class="icon"><i class="fa fa-save"></i></span>
+                            <span class="text">Simpan</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <!-- <span id="validasi" class="text-danger mt-2"><?php echo $this->session->flashdata('message'); ?></span> -->
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Anda yakin mau logout?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
+            <a class="btn btn-danger" onclick="logoutUser()" href="#">Ya</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../assets/js/sb-admin-2.min.js"></script>
+    <script src="../assets/js/apps/tambahObat.js"></script>
+  </body>
+</html>
